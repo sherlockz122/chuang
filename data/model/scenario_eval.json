@@ -1,0 +1,1233 @@
+{
+ "口径": "情景题库: 端到端决策对金标准判卷(约束四规则边界+组合+推送合理性+冷启动), 非回放; 频次基线=同卷对照(历史最常去top3, 无约束)",
+ "use_llm": true,
+ "summary": {
+  "scenarios": 13,
+  "pass": 13,
+  "rate": 1.0,
+  "by_rule": {
+   "safety": {
+    "pass": 4,
+    "total": 4
+   },
+   "night": {
+    "pass": 2,
+    "total": 2
+   },
+   "highway": {
+    "pass": 2,
+    "total": 2
+   },
+   "cooldown": {
+    "pass": 1,
+    "total": 1
+   },
+   "combo": {
+    "pass": 1,
+    "total": 1
+   },
+   "push": {
+    "pass": 2,
+    "total": 2
+   },
+   "cold": {
+    "pass": 1,
+    "total": 1
+   }
+  },
+  "avg_elapsed_ms": 1923.5,
+  "max_elapsed_ms": 6036.0
+ },
+ "freq_baseline": {
+  "pass": 8,
+  "total": 13,
+  "rate": 0.6154
+ },
+ "matrix": {
+  "MLP预测": {
+   "val_top1": 0.2947,
+   "val_top3": 0.547,
+   "train_samples": 2459,
+   "val_samples": 872
+  },
+  "回放评测": {
+   "all_rate": 0.5933,
+   "val_rate": 0.5077,
+   "val_graded": 5326
+  },
+  "对照基线": {
+   "随机_val": 0.1585,
+   "频次_val": 0.4626
+  },
+  "分片对比": {
+   "冷启动_diff": 0.1953,
+   "最大时段_diff": 0.1238
+  },
+  "疲劳识别": {
+   "val_mae": 0.0268,
+   "params": 93825,
+   "DDD留来源准确率": 0.9167,
+   "留来源视频数": 12
+  },
+  "数据对齐": {
+   "对齐覆盖率": 86.27,
+   "高德属性对齐": 1826
+  }
+ },
+ "scenarios": [
+  {
+   "id": "S01",
+   "name": "L1低警惕拦景区",
+   "rule": "safety",
+   "user": "U_15",
+   "time": "2008-02-08 12:00:00",
+   "safety": 1,
+   "highway": "secondary",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "park",
+    "restaurant",
+    "parking"
+   ],
+   "candidates": [
+    [
+     "荷花市场",
+     "scenic"
+    ],
+    [
+     "星巴克",
+     "restaurant"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "管氏翅吧",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "北京市什刹海运动学校",
+     "school"
+    ],
+    [
+     "悠航SLOWBOAT",
+     "restaurant"
+    ]
+   ],
+   "blocked": [
+    {
+     "poi": "OSM_N_269491228",
+     "rule": "安全等级1不允许scenic"
+    },
+    {
+     "poi": "OSM_N_931453417",
+     "rule": "安全等级1不允许school"
+    }
+   ],
+   "decision": {
+    "poi_id": "OSM_N_5087767857",
+    "reason": "快餐店附近，建议选择OSSN_5087767858作为推荐POI",
+    "confidence": 0.95,
+    "name": "停车场",
+    "category": "parking",
+    "dist_m": 49
+   },
+   "pass": true,
+   "checks": [
+    "✓ 拦截 荷花市场(scenic): 安全等级1不允许scenic",
+    "✓ 结构完整(候选内/有名字/有理由)"
+   ],
+   "freq_top3": [
+    "school",
+    "park",
+    "hospital"
+   ],
+   "freq_pass": true,
+   "freq_msg": "频次基线推 北京市什刹海运动学校(该类无约束冲突)",
+   "elapsed_ms": 6036.0
+  },
+  {
+   "id": "S02",
+   "name": "L2疲劳拦餐饮",
+   "rule": "safety",
+   "user": "U_3",
+   "time": "2008-02-08 12:00:00",
+   "safety": 2,
+   "highway": "secondary",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "restaurant",
+    "hotel",
+    "transport"
+   ],
+   "candidates": [
+    [
+     "Under Renovation (used to be Bookworm)",
+     "restaurant"
+    ],
+    [
+     "Zhongluanxin Insurance Agency Co. Ltd",
+     "office"
+    ],
+    [
+     "Panorama",
+     "restaurant"
+    ],
+    [
+     "Iqiyi",
+     "restaurant"
+    ],
+    [
+     "Hong Kong Lion Hotpot",
+     "restaurant"
+    ],
+    [
+     "兰州拉面",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "Duplex Noodle Place",
+     "restaurant"
+    ],
+    [
+     "D-Lounge",
+     "restaurant"
+    ]
+   ],
+   "blocked": [
+    {
+     "poi": "OSM_N_60170164",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_3523113780",
+     "rule": "安全等级2不允许office"
+    },
+    {
+     "poi": "OSM_N_13871447001",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_272576435",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_3518560525",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_3521108596",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_3523113774",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_3509476194",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_13887517001",
+     "rule": "安全等级2不允许restaurant"
+    }
+   ],
+   "decision": null,
+   "pass": true,
+   "checks": [
+    "✓ 拦截 Under Renovation (used to be Bookworm)(restaurant): 安全等级2不允许restaurant",
+    "✓ 拦截 Panorama(restaurant): 安全等级2不允许restaurant",
+    "✓ 拦截 Iqiyi(restaurant): 安全等级2不允许restaurant",
+    "✓ 拦截 Hong Kong Lion Hotpot(restaurant): 安全等级2不允许restaurant",
+    "✓ 拦截 兰州拉面(restaurant): 安全等级2不允许restaurant",
+    "✓ 拦截 餐饮(restaurant): 安全等级2不允许restaurant",
+    "✓ 拦截 Duplex Noodle Place(restaurant): 安全等级2不允许restaurant",
+    "✓ 拦截 D-Lounge(restaurant): 安全等级2不允许restaurant"
+   ],
+   "freq_top3": [
+    "hotel",
+    "restaurant"
+   ],
+   "freq_pass": false,
+   "freq_msg": "频次基线会推被拦类别 Under Renovation (used to be Bookworm)(restaurant) ✗",
+   "elapsed_ms": 6.7
+  },
+  {
+   "id": "S03",
+   "name": "L2疲劳只放停车类",
+   "rule": "safety",
+   "user": "U_3",
+   "time": "2008-02-08 12:00:00",
+   "safety": 2,
+   "highway": "secondary",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "restaurant",
+    "hotel",
+    "transport"
+   ],
+   "candidates": [
+    [
+     "清上园停车场",
+     "parking"
+    ],
+    [
+     "好利来",
+     "restaurant"
+    ],
+    [
+     "郭林家常菜",
+     "restaurant"
+    ],
+    [
+     "清上园停车场",
+     "parking"
+    ],
+    [
+     "庆丰包子铺",
+     "restaurant"
+    ],
+    [
+     "朱房北",
+     "transport"
+    ]
+   ],
+   "blocked": [
+    {
+     "poi": "OSM_N_837167545",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_837167084",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_5273204122",
+     "rule": "安全等级2不允许restaurant"
+    },
+    {
+     "poi": "OSM_N_13161970243",
+     "rule": "安全等级2不允许transport"
+    }
+   ],
+   "decision": {
+    "poi_id": "OSM_N_606304147",
+    "reason": "推荐在清上园停车场停车，因为该地点是用户最近的停车地点，并且附近有多个餐饮和酒店，满足用户的休息需求。",
+    "confidence": 0.95,
+    "name": "清上园停车场",
+    "category": "parking",
+    "dist_m": 0
+   },
+   "pass": true,
+   "checks": [
+    "✓ 推送 parking: 实际 清上园停车场",
+    "✓ 结构完整(候选内/有名字/有理由)"
+   ],
+   "freq_top3": [
+    "hotel",
+    "restaurant"
+   ],
+   "freq_pass": false,
+   "freq_msg": "频次基线推 好利来",
+   "elapsed_ms": 2504.2
+  },
+  {
+   "id": "S04",
+   "name": "L0清醒白天放景区",
+   "rule": "safety",
+   "user": "U_15",
+   "time": "2008-02-08 12:00:00",
+   "safety": 0,
+   "highway": "secondary",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "park",
+    "restaurant",
+    "parking"
+   ],
+   "candidates": [
+    [
+     "荷花市场",
+     "scenic"
+    ],
+    [
+     "星巴克",
+     "restaurant"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "管氏翅吧",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "北京市什刹海运动学校",
+     "school"
+    ],
+    [
+     "悠航SLOWBOAT",
+     "restaurant"
+    ]
+   ],
+   "blocked": [],
+   "decision": {
+    "poi_id": "OSM_N_269491228",
+    "reason": "LLM输出无效, 回退MLP兜底: 合规候选取最近",
+    "confidence": 0.181,
+    "name": "荷花市场",
+    "category": "scenic",
+    "dist_m": 0
+   },
+   "pass": true,
+   "checks": [
+    "✓ 不拦 荷花市场(scenic): 未拦截",
+    "✓ 结构完整(候选内/有名字/有理由)"
+   ],
+   "freq_top3": [
+    "school",
+    "park",
+    "hospital"
+   ],
+   "freq_pass": true,
+   "freq_msg": "频次基线推 北京市什刹海运动学校(该类无约束冲突)",
+   "elapsed_ms": 2391.6
+  },
+  {
+   "id": "S05",
+   "name": "深夜23点拦景区",
+   "rule": "night",
+   "user": "U_24",
+   "time": "2008-02-08 23:00:00",
+   "safety": 0,
+   "highway": "secondary",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "restaurant",
+    "hotel",
+    "parking"
+   ],
+   "candidates": [
+    [
+     "荷花市场",
+     "scenic"
+    ],
+    [
+     "星巴克",
+     "restaurant"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "管氏翅吧",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "北京市什刹海运动学校",
+     "school"
+    ],
+    [
+     "悠航SLOWBOAT",
+     "restaurant"
+    ]
+   ],
+   "blocked": [
+    {
+     "poi": "OSM_N_269491228",
+     "rule": "深夜时段(23:00)该类已关闭"
+    },
+    {
+     "poi": "OSM_N_931453417",
+     "rule": "深夜时段(23:00)该类已关闭"
+    }
+   ],
+   "decision": {
+    "poi_id": "OSM_N_5087767857",
+    "reason": "餐厅周边的餐饮POI，满足用户在休息期间的需求，且距离较近，建议推荐。",
+    "confidence": 0.95,
+    "name": "停车场",
+    "category": "parking",
+    "dist_m": 49
+   },
+   "pass": true,
+   "checks": [
+    "✓ 拦截 荷花市场(scenic): 深夜时段(23:00)该类已关闭",
+    "✓ 结构完整(候选内/有名字/有理由)"
+   ],
+   "freq_top3": [
+    "restaurant",
+    "parking",
+    "school"
+   ],
+   "freq_pass": true,
+   "freq_msg": "频次基线推 星巴克(该类无约束冲突)",
+   "elapsed_ms": 2300.9
+  },
+  {
+   "id": "S06",
+   "name": "深夜放行餐饮(对照组)",
+   "rule": "night",
+   "user": "U_24",
+   "time": "2008-02-08 23:00:00",
+   "safety": 0,
+   "highway": "secondary",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "restaurant",
+    "hotel",
+    "parking"
+   ],
+   "candidates": [
+    [
+     "Under Renovation (used to be Bookworm)",
+     "restaurant"
+    ],
+    [
+     "Zhongluanxin Insurance Agency Co. Ltd",
+     "office"
+    ],
+    [
+     "Panorama",
+     "restaurant"
+    ],
+    [
+     "Iqiyi",
+     "restaurant"
+    ],
+    [
+     "Hong Kong Lion Hotpot",
+     "restaurant"
+    ],
+    [
+     "兰州拉面",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "Duplex Noodle Place",
+     "restaurant"
+    ],
+    [
+     "D-Lounge",
+     "restaurant"
+    ]
+   ],
+   "blocked": [],
+   "decision": {
+    "poi_id": "OSM_N_3523113774",
+    "reason": "餐饮",
+    "confidence": 1.0,
+    "name": "餐饮",
+    "category": "restaurant",
+    "dist_m": 80
+   },
+   "pass": true,
+   "checks": [
+    "✓ 推送 top3 之一(restaurant/hotel/parking): 实际 restaurant",
+    "✓ 结构完整(候选内/有名字/有理由)"
+   ],
+   "freq_top3": [
+    "restaurant",
+    "parking",
+    "school"
+   ],
+   "freq_pass": true,
+   "freq_msg": "频次基线推 Under Renovation (used to be Bookworm)(该类无约束冲突)",
+   "elapsed_ms": 1674.9
+  },
+  {
+   "id": "S07",
+   "name": "高速拦目的地型",
+   "rule": "highway",
+   "user": "U_3",
+   "time": "2008-02-08 12:00:00",
+   "safety": 0,
+   "highway": "motorway",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "restaurant",
+    "hotel",
+    "transport"
+   ],
+   "candidates": [
+    [
+     "Under Renovation (used to be Bookworm)",
+     "restaurant"
+    ],
+    [
+     "Zhongluanxin Insurance Agency Co. Ltd",
+     "office"
+    ],
+    [
+     "Panorama",
+     "restaurant"
+    ],
+    [
+     "Iqiyi",
+     "restaurant"
+    ],
+    [
+     "Hong Kong Lion Hotpot",
+     "restaurant"
+    ],
+    [
+     "兰州拉面",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "Duplex Noodle Place",
+     "restaurant"
+    ],
+    [
+     "D-Lounge",
+     "restaurant"
+    ]
+   ],
+   "blocked": [
+    {
+     "poi": "OSM_N_60170164",
+     "rule": "高速路段不推目的地型(restaurant)"
+    },
+    {
+     "poi": "OSM_N_13871447001",
+     "rule": "高速路段不推目的地型(restaurant)"
+    },
+    {
+     "poi": "OSM_N_272576435",
+     "rule": "高速路段不推目的地型(restaurant)"
+    },
+    {
+     "poi": "OSM_N_3518560525",
+     "rule": "高速路段不推目的地型(restaurant)"
+    },
+    {
+     "poi": "OSM_N_3521108596",
+     "rule": "高速路段不推目的地型(restaurant)"
+    },
+    {
+     "poi": "OSM_N_3523113774",
+     "rule": "高速路段不推目的地型(restaurant)"
+    },
+    {
+     "poi": "OSM_N_3509476194",
+     "rule": "高速路段不推目的地型(restaurant)"
+    },
+    {
+     "poi": "OSM_N_13887517001",
+     "rule": "高速路段不推目的地型(restaurant)"
+    }
+   ],
+   "decision": {
+    "poi_id": "OSM_N_3523113780",
+    "reason": "最优选择是OSSN_3523113780，因为它在交通繁忙的高速公路旁，与用户的出行需求高度相关，并且有较高的潜在收益。",
+    "confidence": 0.95,
+    "name": "Zhongluanxin Insurance Agency Co. Ltd",
+    "category": "office",
+    "dist_m": 38
+   },
+   "pass": true,
+   "checks": [
+    "✓ 拦截 Under Renovation (used to be Bookworm)(restaurant): 高速路段不推目的地型(restaurant)",
+    "✓ 拦截 Panorama(restaurant): 高速路段不推目的地型(restaurant)",
+    "✓ 拦截 Iqiyi(restaurant): 高速路段不推目的地型(restaurant)",
+    "✓ 拦截 Hong Kong Lion Hotpot(restaurant): 高速路段不推目的地型(restaurant)",
+    "✓ 拦截 兰州拉面(restaurant): 高速路段不推目的地型(restaurant)",
+    "✓ 拦截 餐饮(restaurant): 高速路段不推目的地型(restaurant)",
+    "✓ 拦截 Duplex Noodle Place(restaurant): 高速路段不推目的地型(restaurant)",
+    "✓ 拦截 D-Lounge(restaurant): 高速路段不推目的地型(restaurant)",
+    "✓ 结构完整(候选内/有名字/有理由)"
+   ],
+   "freq_top3": [
+    "hotel",
+    "restaurant"
+   ],
+   "freq_pass": false,
+   "freq_msg": "频次基线会推被拦类别 Under Renovation (used to be Bookworm)(restaurant) ✗",
+   "elapsed_ms": 2909.4
+  },
+  {
+   "id": "S08",
+   "name": "高速放行加油站(对照组)",
+   "rule": "highway",
+   "user": "U_318",
+   "time": "2008-02-08 12:00:00",
+   "safety": 0,
+   "highway": "motorway",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "fuel",
+    "restaurant",
+    "office"
+   ],
+   "candidates": [
+    [
+     "中国石化",
+     "fuel"
+    ],
+    [
+     "上地办公中心",
+     "office"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "星巴克",
+     "restaurant"
+    ],
+    [
+     "北京八维研修学院",
+     "school"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "灵图软件",
+     "office"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "潇湘府",
+     "restaurant"
+    ]
+   ],
+   "blocked": [
+    {
+     "poi": "OSM_N_7579293589",
+     "rule": "高速路段不推目的地型(restaurant)"
+    },
+    {
+     "poi": "OSM_N_6991415429",
+     "rule": "高速路段不推目的地型(restaurant)"
+    }
+   ],
+   "decision": {
+    "poi_id": "OSM_N_298582546",
+    "reason": "LLM输出无效, 回退MLP兜底: 合规候选取最近",
+    "confidence": 0.214,
+    "name": "中国石化",
+    "category": "fuel",
+    "dist_m": 0
+   },
+   "pass": true,
+   "checks": [
+    "✓ 推送 fuel: 实际 中国石化",
+    "✓ 结构完整(候选内/有名字/有理由)"
+   ],
+   "freq_top3": [
+    "fuel",
+    "school",
+    "restaurant"
+   ],
+   "freq_pass": true,
+   "freq_msg": "频次基线推 中国石化",
+   "elapsed_ms": 1919.2
+  },
+  {
+   "id": "S09",
+   "name": "冷却期内全拦",
+   "rule": "cooldown",
+   "user": "U_3",
+   "time": "2008-02-08 12:00:00",
+   "safety": 0,
+   "highway": "secondary",
+   "last_push_min": 7.0,
+   "mlp_top3": [
+    "restaurant",
+    "hotel",
+    "transport"
+   ],
+   "candidates": [
+    [
+     "Under Renovation (used to be Bookworm)",
+     "restaurant"
+    ],
+    [
+     "Zhongluanxin Insurance Agency Co. Ltd",
+     "office"
+    ],
+    [
+     "Panorama",
+     "restaurant"
+    ],
+    [
+     "Iqiyi",
+     "restaurant"
+    ],
+    [
+     "Hong Kong Lion Hotpot",
+     "restaurant"
+    ],
+    [
+     "兰州拉面",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "Duplex Noodle Place",
+     "restaurant"
+    ],
+    [
+     "D-Lounge",
+     "restaurant"
+    ]
+   ],
+   "blocked": [
+    {
+     "poi": "OSM_N_60170164",
+     "rule": "距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3523113780",
+     "rule": "距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_13871447001",
+     "rule": "距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_272576435",
+     "rule": "距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3518560525",
+     "rule": "距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3521108596",
+     "rule": "距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3523113774",
+     "rule": "距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3509476194",
+     "rule": "距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_13887517001",
+     "rule": "距上次推送仅7.0分钟(<15.0)"
+    }
+   ],
+   "decision": null,
+   "pass": true,
+   "checks": [
+    "✓ 决策为空(全拦): 实际 空"
+   ],
+   "freq_top3": [
+    "hotel",
+    "restaurant"
+   ],
+   "freq_pass": false,
+   "freq_msg": "频次基线会推 Under Renovation (used to be Bookworm)(无视冷却/安全) ✗",
+   "elapsed_ms": 6.1
+  },
+  {
+   "id": "S10",
+   "name": "疲劳+高速+冷却三重叠加",
+   "rule": "combo",
+   "user": "U_3",
+   "time": "2008-02-08 12:00:00",
+   "safety": 2,
+   "highway": "motorway",
+   "last_push_min": 7.0,
+   "mlp_top3": [
+    "restaurant",
+    "hotel",
+    "transport"
+   ],
+   "candidates": [
+    [
+     "Under Renovation (used to be Bookworm)",
+     "restaurant"
+    ],
+    [
+     "Zhongluanxin Insurance Agency Co. Ltd",
+     "office"
+    ],
+    [
+     "Panorama",
+     "restaurant"
+    ],
+    [
+     "Iqiyi",
+     "restaurant"
+    ],
+    [
+     "Hong Kong Lion Hotpot",
+     "restaurant"
+    ],
+    [
+     "兰州拉面",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "Duplex Noodle Place",
+     "restaurant"
+    ],
+    [
+     "D-Lounge",
+     "restaurant"
+    ]
+   ],
+   "blocked": [
+    {
+     "poi": "OSM_N_60170164",
+     "rule": "安全等级2不允许restaurant; 高速路段不推目的地型(restaurant); 距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3523113780",
+     "rule": "安全等级2不允许office; 距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_13871447001",
+     "rule": "安全等级2不允许restaurant; 高速路段不推目的地型(restaurant); 距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_272576435",
+     "rule": "安全等级2不允许restaurant; 高速路段不推目的地型(restaurant); 距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3518560525",
+     "rule": "安全等级2不允许restaurant; 高速路段不推目的地型(restaurant); 距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3521108596",
+     "rule": "安全等级2不允许restaurant; 高速路段不推目的地型(restaurant); 距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3523113774",
+     "rule": "安全等级2不允许restaurant; 高速路段不推目的地型(restaurant); 距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_3509476194",
+     "rule": "安全等级2不允许restaurant; 高速路段不推目的地型(restaurant); 距上次推送仅7.0分钟(<15.0)"
+    },
+    {
+     "poi": "OSM_N_13887517001",
+     "rule": "安全等级2不允许restaurant; 高速路段不推目的地型(restaurant); 距上次推送仅7.0分钟(<15.0)"
+    }
+   ],
+   "decision": null,
+   "pass": true,
+   "checks": [
+    "✓ 决策为空(全拦): 实际 空"
+   ],
+   "freq_top3": [
+    "hotel",
+    "restaurant"
+   ],
+   "freq_pass": false,
+   "freq_msg": "频次基线会推 Under Renovation (used to be Bookworm)(无视冷却/安全) ✗",
+   "elapsed_ms": 5.8
+  },
+  {
+   "id": "S11",
+   "name": "午餐商圈推餐饮",
+   "rule": "push",
+   "user": "U_3",
+   "time": "2008-02-08 12:00:00",
+   "safety": 0,
+   "highway": "secondary",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "restaurant",
+    "hotel",
+    "transport"
+   ],
+   "candidates": [
+    [
+     "Under Renovation (used to be Bookworm)",
+     "restaurant"
+    ],
+    [
+     "Zhongluanxin Insurance Agency Co. Ltd",
+     "office"
+    ],
+    [
+     "Panorama",
+     "restaurant"
+    ],
+    [
+     "Iqiyi",
+     "restaurant"
+    ],
+    [
+     "Hong Kong Lion Hotpot",
+     "restaurant"
+    ],
+    [
+     "兰州拉面",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "Duplex Noodle Place",
+     "restaurant"
+    ],
+    [
+     "D-Lounge",
+     "restaurant"
+    ]
+   ],
+   "blocked": [],
+   "decision": {
+    "poi_id": "OSM_N_3523113774",
+    "reason": "餐饮",
+    "confidence": 1.0,
+    "name": "餐饮",
+    "category": "restaurant",
+    "dist_m": 80
+   },
+   "pass": true,
+   "checks": [
+    "✓ 推送 top3 之一(restaurant/hotel/transport): 实际 restaurant",
+    "✓ 结构完整(候选内/有名字/有理由)"
+   ],
+   "freq_top3": [
+    "hotel",
+    "restaurant"
+   ],
+   "freq_pass": true,
+   "freq_msg": "频次基线推 Under Renovation (used to be Bookworm)(该类无约束冲突)",
+   "elapsed_ms": 1409.7
+  },
+  {
+   "id": "S12",
+   "name": "途中推加油站",
+   "rule": "push",
+   "user": "U_318",
+   "time": "2008-02-08 12:00:00",
+   "safety": 0,
+   "highway": "secondary",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "fuel",
+    "restaurant",
+    "office"
+   ],
+   "candidates": [
+    [
+     "中国石化",
+     "fuel"
+    ],
+    [
+     "上地办公中心",
+     "office"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "星巴克",
+     "restaurant"
+    ],
+    [
+     "北京八维研修学院",
+     "school"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "灵图软件",
+     "office"
+    ],
+    [
+     "停车场",
+     "parking"
+    ],
+    [
+     "潇湘府",
+     "restaurant"
+    ]
+   ],
+   "blocked": [],
+   "decision": {
+    "poi_id": "OSM_N_298582546",
+    "reason": "LLM输出无效, 回退MLP兜底: 合规候选取最近",
+    "confidence": 0.214,
+    "name": "中国石化",
+    "category": "fuel",
+    "dist_m": 0
+   },
+   "pass": true,
+   "checks": [
+    "✓ 推送 fuel: 实际 中国石化",
+    "✓ 结构完整(候选内/有名字/有理由)"
+   ],
+   "freq_top3": [
+    "fuel",
+    "school",
+    "restaurant"
+   ],
+   "freq_pass": true,
+   "freq_msg": "频次基线推 中国石化",
+   "elapsed_ms": 2445.7
+  },
+  {
+   "id": "S13",
+   "name": "冷启动用户稳健决策",
+   "rule": "cold",
+   "user": "U_191",
+   "time": "2008-02-06 12:00:00",
+   "safety": 0,
+   "highway": "secondary",
+   "last_push_min": 0.0,
+   "mlp_top3": [
+    "restaurant",
+    "hotel",
+    "transport"
+   ],
+   "candidates": [
+    [
+     "Under Renovation (used to be Bookworm)",
+     "restaurant"
+    ],
+    [
+     "Zhongluanxin Insurance Agency Co. Ltd",
+     "office"
+    ],
+    [
+     "Panorama",
+     "restaurant"
+    ],
+    [
+     "Iqiyi",
+     "restaurant"
+    ],
+    [
+     "Hong Kong Lion Hotpot",
+     "restaurant"
+    ],
+    [
+     "兰州拉面",
+     "restaurant"
+    ],
+    [
+     "餐饮",
+     "restaurant"
+    ],
+    [
+     "Duplex Noodle Place",
+     "restaurant"
+    ],
+    [
+     "D-Lounge",
+     "restaurant"
+    ]
+   ],
+   "blocked": [],
+   "decision": {
+    "poi_id": "OSM_N_3523113774",
+    "reason": "餐饮",
+    "confidence": 1.0,
+    "name": "餐饮",
+    "category": "restaurant",
+    "dist_m": 80
+   },
+   "pass": true,
+   "checks": [
+    "✓ 推送 top3 之一(restaurant/hotel/transport): 实际 restaurant",
+    "✓ 结构完整(候选内/有名字/有理由)",
+    "✓ 概率不塌缩(max=0.135≤0.35)"
+   ],
+   "freq_top3": [
+    "convenience"
+   ],
+   "freq_pass": true,
+   "freq_msg": "频次基线推 无(该类无约束冲突)",
+   "elapsed_ms": 1395.2
+  }
+ ]
+}

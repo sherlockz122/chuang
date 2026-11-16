@@ -1,0 +1,163 @@
+{
+ "protocol": "DDD留来源(6困+6醒), 每视频200帧, 双通道PERCLOS, 阈值训练来源搜索→留出验证",
+ "n_videos": 54,
+ "heldout_sources": [
+  "A",
+  "D",
+  "H",
+  "I",
+  "U",
+  "X",
+  "d",
+  "e",
+  "i",
+  "s",
+  "x",
+  "za"
+ ],
+ "student": {
+  "threshold": 0.12,
+  "tune_video_acc": 0.8095,
+  "heldout_video_acc": 0.9167,
+  "heldout_n": 12,
+  "heldout_detail": {
+   "A": {
+    "perclos": 0.135,
+    "label": 1,
+    "correct": true
+   },
+   "D": {
+    "perclos": 0.888,
+    "label": 1,
+    "correct": true
+   },
+   "H": {
+    "perclos": 0.17,
+    "label": 1,
+    "correct": true
+   },
+   "I": {
+    "perclos": 0.675,
+    "label": 1,
+    "correct": true
+   },
+   "U": {
+    "perclos": 0.623,
+    "label": 1,
+    "correct": true
+   },
+   "X": {
+    "perclos": 0.295,
+    "label": 1,
+    "correct": true
+   },
+   "d": {
+    "perclos": 0.69,
+    "label": 0,
+    "correct": false
+   },
+   "e": {
+    "perclos": 0.0,
+    "label": 0,
+    "correct": true
+   },
+   "i": {
+    "perclos": 0.105,
+    "label": 0,
+    "correct": true
+   },
+   "s": {
+    "perclos": 0.01,
+    "label": 0,
+    "correct": true
+   },
+   "x": {
+    "perclos": 0.075,
+    "label": 0,
+    "correct": true
+   },
+   "za": {
+    "perclos": 0.025,
+    "label": 0,
+    "correct": true
+   }
+  }
+ },
+ "teacher_ear": {
+  "threshold": 0.06,
+  "tune_video_acc": 0.881,
+  "heldout_video_acc": 0.8333,
+  "heldout_n": 12,
+  "heldout_detail": {
+   "A": {
+    "perclos": 0.085,
+    "label": 1,
+    "correct": true
+   },
+   "D": {
+    "perclos": 0.156,
+    "label": 1,
+    "correct": true
+   },
+   "H": {
+    "perclos": 0.14,
+    "label": 1,
+    "correct": true
+   },
+   "I": {
+    "perclos": 0.135,
+    "label": 1,
+    "correct": true
+   },
+   "U": {
+    "perclos": 0.035,
+    "label": 1,
+    "correct": false
+   },
+   "X": {
+    "perclos": 0.085,
+    "label": 1,
+    "correct": true
+   },
+   "d": {
+    "perclos": 0.01,
+    "label": 0,
+    "correct": true
+   },
+   "e": {
+    "perclos": 0.0,
+    "label": 0,
+    "correct": true
+   },
+   "i": {
+    "perclos": 0.02,
+    "label": 0,
+    "correct": true
+   },
+   "s": {
+    "perclos": 0.01,
+    "label": 0,
+    "correct": true
+   },
+   "x": {
+    "perclos": 0.065,
+    "label": 0,
+    "correct": false
+   },
+   "za": {
+    "perclos": 0.0,
+    "label": 0,
+    "correct": true
+   }
+  }
+ },
+ "student_teacher_corr": 0.7446,
+ "per_class_perclos": {
+  "alert": {
+   "perclos_mean": 0.1
+  },
+  "drowsy": {
+   "perclos_mean": 0.449
+  }
+ }
+}

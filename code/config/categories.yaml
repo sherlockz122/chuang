@@ -1,0 +1,52 @@
+# POI 类别配置（新路线 v1，可按需增减）
+# 类别设计口径：途中即时型（行驶中刚需）/ 目的地型（行程终点）/ 锚点型（地理定位参照物）
+# amap_code 为高德三级分类编码（一级3位/二级3位），接入高德 API 前需与官方编码表核对
+
+groups:
+  - id: instant
+    name: 途中即时型
+    categories:
+      - {id: fuel,       name: 加油站,   amap_code: "010100", osm: ["amenity=fuel"]}
+      - {id: charging,   name: 充电站,   amap_code: "011100", osm: ["amenity=charging_station"]}
+      - {id: parking,    name: 停车场,   amap_code: "150900", osm: ["amenity=parking", "amenity=motorcycle_parking"]}
+      - {id: toilet,     name: 公共厕所, amap_code: "200300", osm: ["amenity=toilets"]}
+      - {id: hospital,   name: 医院,     amap_code: "090100", osm: ["amenity=hospital", "amenity=clinic"]}
+      - {id: pharmacy,   name: 药店,     amap_code: "090600", osm: ["amenity=pharmacy"]}
+      - {id: convenience, name: 便利店,  amap_code: "060100", osm: ["shop=convenience"]}
+      - {id: car_repair, name: 修车店,   amap_code: "030100", osm: ["shop=car_repair"]}
+      - {id: services,   name: 服务区,   amap_code: "010700", osm: ["highway=services"]}
+
+  - id: destination
+    name: 目的地型
+    categories:
+      - {id: restaurant, name: 餐饮,     amap_code: "050100", osm: ["amenity=restaurant", "amenity=fast_food", "amenity=cafe", "amenity=bar"]}
+      - {id: shopping,   name: 购物,     amap_code: "060400", osm: ["shop=mall", "shop=supermarket", "shop=department_store"]}
+      - {id: scenic,     name: 景区,     amap_code: "110100", osm: ["tourism=attraction", "tourism=museum", "tourism=zoo", "tourism=theme_park"]}
+      - {id: hotel,      name: 酒店,     amap_code: "100100", osm: ["tourism=hotel", "tourism=guest_house", "tourism=hostel"]}
+      - {id: park,       name: 公园广场, amap_code: "110200", osm: ["leisure=park", "leisure=garden"]}
+      - {id: sports,     name: 体育场馆, amap_code: "080100", osm: ["leisure=sports_centre", "leisure=stadium"]}
+      - {id: cinema,     name: 电影院,   amap_code: "080600", osm: ["amenity=cinema"]}
+
+  - id: anchor
+    name: 锚点型
+    categories:
+      - {id: transport,  name: 交通枢纽, amap_code: "150200|150500|150700", osm: ["railway=station", "railway=subway_entrance", "amenity=bus_station", "aeroway=terminal"]}
+      - {id: office,     name: 写字楼,   amap_code: "120201", osm: ["building=office", "office=*"]}
+      - {id: school,     name: 学校,     amap_code: "141200", osm: ["amenity=school", "amenity=university", "amenity=college"]}
+
+# 功能互补先验对（edge_type=FUNC_COMP，后期轨迹共现再加权）
+complement_pairs:
+  - [fuel, parking]
+  - [fuel, convenience]
+  - [restaurant, parking]
+  - [scenic, parking]
+  - [hotel, parking]
+  - [charging, restaurant]
+  - [charging, shopping]
+  - [transport, restaurant]
+  - [transport, hotel]
+  - [school, restaurant]
+  - [office, restaurant]
+  - [hospital, parking]
+  - [hospital, pharmacy]
+  - [cinema, parking]

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+node_modules/
+*.log
+.amap_key.env
+code/.git/
+models/
+data/graph_out/roads_all.jsonl
+data/graph_out/graph.pkl
+data/graph_out/graph_map.html
+data/model/_dbg/

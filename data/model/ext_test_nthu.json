@@ -1,0 +1,58 @@
+{
+ "protocol": "每视频100帧, 双通道PERCLOS, 阈值001/002/005搜索→006验证",
+ "n_videos": 27,
+ "student": {
+  "threshold": 0.5,
+  "tune_video_acc": 0.5417,
+  "heldout_006_video_acc": 0.3333,
+  "n_heldout": 3,
+  "per_subject_acc": {
+   "001": 0.625,
+   "002": 0.5,
+   "005": 0.5,
+   "006": 0.3333
+  }
+ },
+ "teacher_ear": {
+  "threshold": 0.4,
+  "tune_video_acc": 0.5833,
+  "heldout_006_video_acc": 0.3333,
+  "n_heldout": 3,
+  "per_subject_acc": {
+   "001": 0.5,
+   "002": 0.625,
+   "005": 0.625,
+   "006": 0.3333
+  }
+ },
+ "per_class_perclos": {
+  "alert": {
+   "n": 13,
+   "perclos_mean": 0.35,
+   "perclos_std": 0.406
+  },
+  "drowsy": {
+   "n": 14,
+   "perclos_mean": 0.328,
+   "perclos_std": 0.414
+  }
+ },
+ "mean_frame_seen_frac": 0.989,
+ "heldout_videos": {
+  "006_glasses_nonsleepyCombination": {
+   "perclos": 0.021,
+   "label": 1,
+   "correct": false
+  },
+  "006_glasses_sleepyCombination": {
+   "perclos": 0.0,
+   "label": 1,
+   "correct": false
+  },
+  "006_glasses_slowBlinkWithNodding": {
+   "perclos": 0.0,
+   "label": 0,
+   "correct": true
+  }
+ }
+}

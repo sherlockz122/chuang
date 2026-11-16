@@ -1,0 +1,43 @@
+{
+ "n_scenarios": 4428,
+ "constraint_trigger_rate_pct": 82.81,
+ "rule_trigger_counts": {
+  "安全等级": 13550,
+  "高速禁推": 4205,
+  "推送冷却": 2038,
+  "深夜关闭": 286
+ },
+ "blocked_category_counts": {
+  "restaurant": 5908,
+  "school": 3316,
+  "transport": 2720,
+  "office": 2016,
+  "parking": 1930,
+  "hotel": 1780,
+  "park": 1715,
+  "hospital": 240,
+  "fuel": 112,
+  "charging": 90,
+  "scenic": 77,
+  "toilet": 70,
+  "convenience": 38,
+  "cinema": 31,
+  "sports": 24,
+  "pharmacy": 12
+ },
+ "compliance_verified": {
+  "passed_rechecked": 12429,
+  "total_passed": 12429,
+  "recheck_pass_rate_pct": 100.0
+ },
+ "latency_ms_median": {
+  "mlp_feature+infer": 0.57,
+  "candidate_search": 6.95,
+  "constraint_check": 0.01
+ },
+ "latency_ms_p95": {
+  "mlp_feature+infer": 0.75,
+  "candidate_search": 8.36,
+  "constraint_check": 0.023
+ }
+}

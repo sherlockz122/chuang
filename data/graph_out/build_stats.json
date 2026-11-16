@@ -1,0 +1,30 @@
+{
+ "nodes": 49136,
+ "edges": 232857,
+ "by_etype": {
+  "SPATIAL_NEAR": 145455,
+  "IN_REGION": 16775,
+  "ROAD_CONN": 45249,
+  "FUNC_COMP": 25378
+ },
+ "poi_by_cat": {
+  "restaurant": 4579,
+  "transport": 1255,
+  "scenic": 492,
+  "toilet": 808,
+  "parking": 1945,
+  "convenience": 492,
+  "hotel": 939,
+  "shopping": 580,
+  "school": 1258,
+  "fuel": 232,
+  "sports": 269,
+  "office": 1599,
+  "pharmacy": 109,
+  "cinema": 70,
+  "hospital": 324,
+  "car_repair": 23,
+  "charging": 74,
+  "park": 1727
+ }
+}

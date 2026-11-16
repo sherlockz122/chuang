@@ -1,0 +1,22 @@
+# 城市与范围配置（新路线 · POI语义图）
+# 坐标系统一约定：所有产出均为 WGS-84（EPSG:4326）；高德数据 GCJ-02 必须先转 WGS-84 再入图
+
+city: 北京
+province_adcode: "110000"
+
+# 北京市全域 bbox（WGS-84，用于数据下载/过滤）
+bbox_whole: [115.7, 39.4, 117.4, 41.1]
+
+# v1 构图范围：五环内（约值，可在质检后微调）
+bbox_v1: [116.2, 39.8, 116.6, 40.05]
+
+# 高德多边形搜索分格参数（0.1° 网格，bbox_whole 约 17×17=289 格）
+amap_grid_deg: 0.1
+amap_page_size: 25          # 高德单页条数上限
+amap_polygon_max_points: 25 # 高德多边形搜索顶点数限制
+
+# 构图参数
+poi_road_dist_m: 50         # poi-road 空间邻接阈值
+poi_poi_radius_m: 500       # poi-poi 邻接半径
+poi_poi_k: 20               # 每节点 poi-poi 边数上限
+dedup_dist_m: 50            # 同名去重距离阈值

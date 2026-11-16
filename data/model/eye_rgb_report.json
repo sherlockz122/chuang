@@ -1,0 +1,8 @@
+{
+ "val_mae": 0.0268,
+ "n_train": 22054,
+ "n_val": 2450,
+ "n_params": 93825,
+ "teacher": "MediaPipe-EAR(连续软目标)",
+ "train_src": "DDD(除留出来源)+NTHU-001/002/005"
+}

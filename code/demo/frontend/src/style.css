@@ -1,0 +1,28 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #app { height: 100%; }
+body { font-family: "Segoe UI", "Microsoft YaHei", sans-serif; background: #0b0f17; }
+
+.app { display: flex; flex-direction: column; height: 100%; }
+.main { flex: 1; display: flex; min-height: 0; }
+.stage { flex: 1; position: relative; min-width: 0; }
+
+.busy { position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+  background: #2f6fed; color: #fff; padding: 8px 18px; border-radius: 20px;
+  font-size: 13px; z-index: 3000; box-shadow: 0 4px 16px rgba(47,111,237,.5); }
+.err { position: fixed; bottom: 60px; left: 50%; transform: translateX(-50%);
+  background: #7f1d1d; color: #fecaca; padding: 8px 18px; border-radius: 8px;
+  font-size: 13px; z-index: 3000; max-width: 80%; }
+
+/* Leaflet 深色微调 */
+.leaflet-container { background: #141926; }
+
+/* 回放静默决策提示 */
+.toast { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+  background: rgba(31, 41, 55, .92); color: #d1d5db; padding: 7px 16px;
+  border-radius: 16px; font-size: 13px; z-index: 1100; white-space: nowrap; }
+
+/* 常驻预测条：展示最近一次决策的 MLP 说数字结果 */
+.predchip { position: absolute; top: 44px; left: 10px; z-index: 1100;
+  background: rgba(17, 24, 39, .88); color: #93c5fd; padding: 4px 10px;
+  border-radius: 8px; font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,.4); }
+</style>

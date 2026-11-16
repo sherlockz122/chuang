@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.pkl
+*.pt
+*.safetensors
+*.bin
+.venv/
+*.log
+.amap_key.env
+node_modules/
+demo/frontend/dist/
