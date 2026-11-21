@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(os.path.dirname(ROOT), 'data')
 OUT = os.path.join(DATA, 'model')
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from features import CATS, user_history_features
+from features import CATS, user_history_features, region_adcode
 from constraint_engine import check as constraint_check
 import llm_channel as lc
 from push_decide import load_mlp, user_history_before, PAIRS, GROUP
@@ -51,7 +51,8 @@ def main():
                 continue
             # ---- MLP 通道（一次，环境无关） ----
             t_a = time.time()
-            feats = user_history_features(hist_c, hist_d, hist_days, t_str, '')
+            feats = user_history_features(hist_c, hist_d, hist_days, t_str,
+                                          region_adcode(info['lng'], info['lat']))
             with torch.no_grad():
                 probs = torch.softmax(mlp(torch.tensor(feats).unsqueeze(0)), -1)[0].numpy()
             top3 = [(CATS[i], float(probs[i])) for i in probs.argsort()[::-1][:3]]

@@ -14,7 +14,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(os.path.dirname(ROOT), 'data')
 CFG = os.path.join(ROOT, 'config')
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from features import CATS, CAT2ID, user_history_features
+from features import CATS, CAT2ID, user_history_features, region_adcode
 from constraint_engine import check as constraint_check
 import llm_channel as lc
 
@@ -96,7 +96,8 @@ def decide(user, time, lng, lat, safety=0, fatigue=None, highway='secondary',
 
     # ---------- 通道1: MLP 说数字 ----------
     mlp = load_mlp()
-    feats = user_history_features(hist_c, hist_d, hist_days, time, '')
+    rid = region_adcode(lng, lat)  # 区域特征与训练口径一致（停留点所属行政区）
+    feats = user_history_features(hist_c, hist_d, hist_days, time, rid)
     with torch.no_grad():
         logits = mlp(torch.tensor(feats).unsqueeze(0))[0]
     probs = torch.softmax(logits, dim=-1).numpy()
@@ -150,6 +151,16 @@ def decide(user, time, lng, lat, safety=0, fatigue=None, highway='secondary',
             decision['name'] = hit['name']
             decision['category'] = hit['category']
             decision['dist_m'] = hit['dist_m']
+        # 定稿一致性: 有 MLP top3 类合规候选时，定稿必须落在 top3 类内
+        # （说句子不能和说数字打架——LLM 偶发选互补类候选却口称另一类，如"加油站"实选交通枢纽）
+        top3_cats = {c for c, _ in top3}
+        if decision.get('category') not in top3_cats:
+            fb = next((c for c in passed if c['category'] in top3_cats), None)
+            if fb:
+                decision = {'poi_id': fb['poi_id'],
+                            'reason': f'定稿与MLP预测不一致, 回退MLP优先候选: {fb["name"]}',
+                            'confidence': round(float(top3[0][1]), 3),
+                            'name': fb['name'], 'category': fb['category'], 'dist_m': fb['dist_m']}
 
     return {'user': user, 'time': time, 'position': [lng, lat],
             'safety_level': safety, 'fatigue_signal': fatigue_sig, 'highway': highway,

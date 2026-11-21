@@ -21,6 +21,35 @@ CATS = ['fuel', 'charging', 'parking', 'toilet', 'hospital', 'pharmacy', 'conven
 CAT2ID = {c: i for i, c in enumerate(CATS)}
 N_REGION = 11
 
+_REGIONS = None
+
+
+def _in_ring(x, y, ring):
+    """射线法点包含判定"""
+    inside = False
+    j = len(ring) - 1
+    for i in range(len(ring)):
+        xi, yi = ring[i][0], ring[i][1]
+        xj, yj = ring[j][0], ring[j][1]
+        if ((yi > y) != (yj > y)) and (x < (xj - xi) * (y - yi) / (yj - yi) + xi):
+            inside = not inside
+        j = i
+    return inside
+
+
+def region_adcode(lng, lat):
+    """经纬度 → 行政区 adcode（北京各区 MultiPolygon 点包含，毫秒级；区外返回 ''）"""
+    global _REGIONS
+    if _REGIONS is None:
+        _REGIONS = json.load(open(os.path.join(DATA, 'graph_out', 'regions.json'),
+                                  encoding='utf-8'))
+    for r in _REGIONS:
+        for poly in r['geometry']['coordinates']:  # MultiPolygon → 多边形列表
+            for ring in poly:                       # 外环/内环
+                if _in_ring(lng, lat, ring):
+                    return r['adcode']
+    return ''
+
 
 def user_history_features(hist_cats, hist_durs, hist_days, t_str, region_rid):
     """构造单样本 64 维特征（训练与推流共用同一口径）
@@ -63,6 +92,7 @@ def main():
         hist_cat = Counter()      # 历史类别计数（在线口径：不含当前样本）
         hist_dur = []             # 历史停留时长
         hist_days = set()         # 历史活跃天数
+        prev_region = ''          # 上一停留所在区域（在线口径: 决策时刻能知道的区域=司机刚离开的区域）
         for e in evs:
             n = nodes.get(e['poi_node'] or '')
             if n is None or n['type'] != 'poi':
@@ -72,8 +102,9 @@ def main():
             if cat not in CAT2ID:
                 n_dropped += 1
                 continue
+            # 区域特征用"上一停留"的区域——当前停留的区域是答案的一部分，用它=标签泄漏
             x = user_history_features(hist_cat, hist_dur, hist_days, e['t_start'],
-                                      (e['region_node'] or '').replace('REG_', ''))
+                                      prev_region)
             X.append(x)
             y.append(CAT2ID[cat])
             meta.append({'taxi_id': tid, 't': e['t_start'], 'cat': cat,
@@ -82,6 +113,7 @@ def main():
             hist_cat[cat] += 1
             hist_dur.append(e['dur_min'])
             hist_days.add(e['t_start'][:10])
+            prev_region = (e['region_node'] or '').replace('REG_', '')
 
     X = np.stack(X)
     y = np.array(y, dtype=np.int64)

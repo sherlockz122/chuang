@@ -1,8 +1,8 @@
 {
  "train_samples": 2459,
  "val_samples": 872,
- "val_top1": 0.2947,
- "val_top3": 0.547,
+ "val_top1": 0.2913,
+ "val_top3": 0.5252,
  "best_epoch": 30,
  "n_class": 19,
  "dim_in": 64

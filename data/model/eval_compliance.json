@@ -1,43 +1,43 @@
 {
  "n_scenarios": 4428,
- "constraint_trigger_rate_pct": 82.81,
+ "constraint_trigger_rate_pct": 82.57,
  "rule_trigger_counts": {
-  "安全等级": 13550,
-  "高速禁推": 4205,
-  "推送冷却": 2038,
-  "深夜关闭": 286
+  "安全等级": 13376,
+  "高速禁推": 4721,
+  "推送冷却": 1944,
+  "深夜关闭": 248
  },
  "blocked_category_counts": {
-  "restaurant": 5908,
-  "school": 3316,
-  "transport": 2720,
-  "office": 2016,
-  "parking": 1930,
-  "hotel": 1780,
-  "park": 1715,
-  "hospital": 240,
-  "fuel": 112,
-  "charging": 90,
-  "scenic": 77,
-  "toilet": 70,
-  "convenience": 38,
-  "cinema": 31,
-  "sports": 24,
-  "pharmacy": 12
+  "restaurant": 7152,
+  "school": 2978,
+  "transport": 2480,
+  "office": 1908,
+  "parking": 1834,
+  "hotel": 1652,
+  "park": 1425,
+  "hospital": 316,
+  "fuel": 156,
+  "scenic": 106,
+  "charging": 78,
+  "cinema": 70,
+  "toilet": 56,
+  "convenience": 54,
+  "pharmacy": 12,
+  "sports": 12
  },
  "compliance_verified": {
-  "passed_rechecked": 12429,
-  "total_passed": 12429,
+  "passed_rechecked": 12561,
+  "total_passed": 12561,
   "recheck_pass_rate_pct": 100.0
  },
  "latency_ms_median": {
-  "mlp_feature+infer": 0.57,
-  "candidate_search": 6.95,
-  "constraint_check": 0.01
+  "mlp_feature+infer": 1.66,
+  "candidate_search": 25.48,
+  "constraint_check": 0.027
  },
  "latency_ms_p95": {
-  "mlp_feature+infer": 0.75,
-  "candidate_search": 8.36,
-  "constraint_check": 0.023
+  "mlp_feature+infer": 2.96,
+  "candidate_search": 36.28,
+  "constraint_check": 0.115
  }
 }

@@ -35,8 +35,8 @@
     "total": 1
    }
   },
-  "avg_elapsed_ms": 1923.5,
-  "max_elapsed_ms": 6036.0
+  "avg_elapsed_ms": 11031.0,
+  "max_elapsed_ms": 31555.4
  },
  "freq_baseline": {
   "pass": 8,
@@ -45,14 +45,14 @@
  },
  "matrix": {
   "MLP预测": {
-   "val_top1": 0.2947,
-   "val_top3": 0.547,
+   "val_top1": 0.2913,
+   "val_top3": 0.5252,
    "train_samples": 2459,
    "val_samples": 872
   },
   "回放评测": {
-   "all_rate": 0.5933,
-   "val_rate": 0.5077,
+   "all_rate": 0.5963,
+   "val_rate": 0.4974,
    "val_graded": 5326
   },
   "对照基线": {
@@ -60,8 +60,8 @@
    "频次_val": 0.4626
   },
   "分片对比": {
-   "冷启动_diff": 0.1953,
-   "最大时段_diff": 0.1238
+   "冷启动_diff": 0.206,
+   "最大时段_diff": 0.1283
   },
   "疲劳识别": {
    "val_mae": 0.0268,
@@ -79,15 +79,15 @@
    "id": "S01",
    "name": "L1低警惕拦景区",
    "rule": "safety",
-   "user": "U_15",
+   "user": "U_10",
    "time": "2008-02-08 12:00:00",
    "safety": 1,
    "highway": "secondary",
    "last_push_min": 0.0,
    "mlp_top3": [
-    "park",
-    "restaurant",
-    "parking"
+    "toilet",
+    "parking",
+    "school"
    ],
    "candidates": [
     [
@@ -143,7 +143,7 @@
    ],
    "decision": {
     "poi_id": "OSM_N_5087767857",
-    "reason": "快餐店附近，建议选择OSSN_5087767858作为推荐POI",
+    "reason": "公共厕所附近有星巴克和快餐店，建议用户前往休息或就餐。",
     "confidence": 0.95,
     "name": "停车场",
     "category": "parking",
@@ -155,13 +155,13 @@
     "✓ 结构完整(候选内/有名字/有理由)"
    ],
    "freq_top3": [
-    "school",
-    "park",
-    "hospital"
+    "toilet",
+    "transport",
+    "park"
    ],
    "freq_pass": true,
-   "freq_msg": "频次基线推 北京市什刹海运动学校(该类无约束冲突)",
-   "elapsed_ms": 6036.0
+   "freq_msg": "频次基线推 无(该类无约束冲突)",
+   "elapsed_ms": 31555.4
   },
   {
    "id": "S02",
@@ -271,7 +271,7 @@
    ],
    "freq_pass": false,
    "freq_msg": "频次基线会推被拦类别 Under Renovation (used to be Bookworm)(restaurant) ✗",
-   "elapsed_ms": 6.7
+   "elapsed_ms": 35.5
   },
   {
    "id": "S03",
@@ -350,21 +350,21 @@
    ],
    "freq_pass": false,
    "freq_msg": "频次基线推 好利来",
-   "elapsed_ms": 2504.2
+   "elapsed_ms": 16037.1
   },
   {
    "id": "S04",
    "name": "L0清醒白天放景区",
    "rule": "safety",
-   "user": "U_15",
+   "user": "U_10",
    "time": "2008-02-08 12:00:00",
    "safety": 0,
    "highway": "secondary",
    "last_push_min": 0.0,
    "mlp_top3": [
-    "park",
-    "restaurant",
-    "parking"
+    "toilet",
+    "parking",
+    "school"
    ],
    "candidates": [
     [
@@ -410,12 +410,12 @@
    ],
    "blocked": [],
    "decision": {
-    "poi_id": "OSM_N_269491228",
-    "reason": "LLM输出无效, 回退MLP兜底: 合规候选取最近",
-    "confidence": 0.181,
-    "name": "荷花市场",
-    "category": "scenic",
-    "dist_m": 0
+    "poi_id": "OSM_N_5087767857",
+    "reason": "公共厕所是用户最常去的POI类型，且在高峰期停留时间较长，因此推荐用户前往公共厕所进行休息。",
+    "confidence": 1.0,
+    "name": "停车场",
+    "category": "parking",
+    "dist_m": 49
    },
    "pass": true,
    "checks": [
@@ -423,26 +423,26 @@
     "✓ 结构完整(候选内/有名字/有理由)"
    ],
    "freq_top3": [
-    "school",
-    "park",
-    "hospital"
+    "toilet",
+    "transport",
+    "park"
    ],
    "freq_pass": true,
-   "freq_msg": "频次基线推 北京市什刹海运动学校(该类无约束冲突)",
-   "elapsed_ms": 2391.6
+   "freq_msg": "频次基线推 无(该类无约束冲突)",
+   "elapsed_ms": 15278.2
   },
   {
    "id": "S05",
-   "name": "深夜23点拦景区",
+   "name": "深夜拦景区",
    "rule": "night",
-   "user": "U_24",
-   "time": "2008-02-08 23:00:00",
+   "user": "U_39",
+   "time": "2008-02-08 01:00:00",
    "safety": 0,
    "highway": "secondary",
    "last_push_min": 0.0,
    "mlp_top3": [
-    "restaurant",
     "hotel",
+    "office",
     "parking"
    ],
    "candidates": [
@@ -479,10 +479,6 @@
      "parking"
     ],
     [
-     "北京市什刹海运动学校",
-     "school"
-    ],
-    [
      "悠航SLOWBOAT",
      "restaurant"
     ]
@@ -490,34 +486,30 @@
    "blocked": [
     {
      "poi": "OSM_N_269491228",
-     "rule": "深夜时段(23:00)该类已关闭"
-    },
-    {
-     "poi": "OSM_N_931453417",
-     "rule": "深夜时段(23:00)该类已关闭"
+     "rule": "深夜时段(1:00)该类已关闭"
     }
    ],
    "decision": {
     "poi_id": "OSM_N_5087767857",
-    "reason": "餐厅周边的餐饮POI，满足用户在休息期间的需求，且距离较近，建议推荐。",
-    "confidence": 0.95,
+    "reason": "酒店",
+    "confidence": 1.0,
     "name": "停车场",
     "category": "parking",
     "dist_m": 49
    },
    "pass": true,
    "checks": [
-    "✓ 拦截 荷花市场(scenic): 深夜时段(23:00)该类已关闭",
+    "✓ 拦截 荷花市场(scenic): 深夜时段(1:00)该类已关闭",
     "✓ 结构完整(候选内/有名字/有理由)"
    ],
    "freq_top3": [
-    "restaurant",
     "parking",
-    "school"
+    "office",
+    "charging"
    ],
    "freq_pass": true,
-   "freq_msg": "频次基线推 星巴克(该类无约束冲突)",
-   "elapsed_ms": 2300.9
+   "freq_msg": "频次基线推 停车场(该类无约束冲突)",
+   "elapsed_ms": 8755.6
   },
   {
    "id": "S06",
@@ -531,7 +523,7 @@
    "mlp_top3": [
     "restaurant",
     "hotel",
-    "parking"
+    "park"
    ],
    "candidates": [
     [
@@ -582,7 +574,7 @@
    },
    "pass": true,
    "checks": [
-    "✓ 推送 top3 之一(restaurant/hotel/parking): 实际 restaurant",
+    "✓ 推送 top3 之一(restaurant/hotel/park): 实际 restaurant",
     "✓ 结构完整(候选内/有名字/有理由)"
    ],
    "freq_top3": [
@@ -592,7 +584,7 @@
    ],
    "freq_pass": true,
    "freq_msg": "频次基线推 Under Renovation (used to be Bookworm)(该类无约束冲突)",
-   "elapsed_ms": 1674.9
+   "elapsed_ms": 8232.8
   },
   {
    "id": "S07",
@@ -706,7 +698,7 @@
    ],
    "freq_pass": false,
    "freq_msg": "频次基线会推被拦类别 Under Renovation (used to be Bookworm)(restaurant) ✗",
-   "elapsed_ms": 2909.4
+   "elapsed_ms": 17812.4
   },
   {
    "id": "S08",
@@ -777,7 +769,7 @@
    "decision": {
     "poi_id": "OSM_N_298582546",
     "reason": "LLM输出无效, 回退MLP兜底: 合规候选取最近",
-    "confidence": 0.214,
+    "confidence": 0.244,
     "name": "中国石化",
     "category": "fuel",
     "dist_m": 0
@@ -794,7 +786,7 @@
    ],
    "freq_pass": true,
    "freq_msg": "频次基线推 中国石化",
-   "elapsed_ms": 1919.2
+   "elapsed_ms": 12574.5
   },
   {
    "id": "S09",
@@ -897,7 +889,7 @@
    ],
    "freq_pass": false,
    "freq_msg": "频次基线会推 Under Renovation (used to be Bookworm)(无视冷却/安全) ✗",
-   "elapsed_ms": 6.1
+   "elapsed_ms": 36.4
   },
   {
    "id": "S10",
@@ -1000,7 +992,7 @@
    ],
    "freq_pass": false,
    "freq_msg": "频次基线会推 Under Renovation (used to be Bookworm)(无视冷却/安全) ✗",
-   "elapsed_ms": 5.8
+   "elapsed_ms": 38.5
   },
   {
    "id": "S11",
@@ -1074,7 +1066,7 @@
    ],
    "freq_pass": true,
    "freq_msg": "频次基线推 Under Renovation (used to be Bookworm)(该类无约束冲突)",
-   "elapsed_ms": 1409.7
+   "elapsed_ms": 9235.3
   },
   {
    "id": "S12",
@@ -1136,7 +1128,7 @@
    "decision": {
     "poi_id": "OSM_N_298582546",
     "reason": "LLM输出无效, 回退MLP兜底: 合规候选取最近",
-    "confidence": 0.214,
+    "confidence": 0.244,
     "name": "中国石化",
     "category": "fuel",
     "dist_m": 0
@@ -1153,7 +1145,7 @@
    ],
    "freq_pass": true,
    "freq_msg": "频次基线推 中国石化",
-   "elapsed_ms": 2445.7
+   "elapsed_ms": 15102.3
   },
   {
    "id": "S13",
@@ -1211,7 +1203,7 @@
    "decision": {
     "poi_id": "OSM_N_3523113774",
     "reason": "餐饮",
-    "confidence": 1.0,
+    "confidence": 0.95,
     "name": "餐饮",
     "category": "restaurant",
     "dist_m": 80
@@ -1220,14 +1212,14 @@
    "checks": [
     "✓ 推送 top3 之一(restaurant/hotel/transport): 实际 restaurant",
     "✓ 结构完整(候选内/有名字/有理由)",
-    "✓ 概率不塌缩(max=0.135≤0.35)"
+    "✓ 概率不塌缩(max=0.161≤0.35)"
    ],
    "freq_top3": [
     "convenience"
    ],
    "freq_pass": true,
    "freq_msg": "频次基线推 无(该类无约束冲突)",
-   "elapsed_ms": 1395.2
+   "elapsed_ms": 8709.2
   }
  ]
 }

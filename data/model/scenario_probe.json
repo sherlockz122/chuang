@@ -1,16 +1,84 @@
 {
- "night_scenic": [],
- "day_scenic": [],
+ "night_scenic": [
+  {
+   "user": "U_39",
+   "time": "2008-02-08 01:00:00",
+   "top3": [
+    "hotel",
+    "office",
+    "parking"
+   ],
+   "max_p": 0.367,
+   "n_stays": 24
+  },
+  {
+   "user": "U_54",
+   "time": "2008-02-08 01:00:00",
+   "top3": [
+    "hotel",
+    "restaurant",
+    "parking"
+   ],
+   "max_p": 0.38,
+   "n_stays": 21
+  },
+  {
+   "user": "U_68",
+   "time": "2008-02-08 01:00:00",
+   "top3": [
+    "hotel",
+    "parking",
+    "office"
+   ],
+   "max_p": 0.287,
+   "n_stays": 22
+  }
+ ],
+ "day_scenic": [
+  {
+   "user": "U_10",
+   "time": "2008-02-08 12:00:00",
+   "top3": [
+    "toilet",
+    "parking",
+    "school"
+   ],
+   "max_p": 0.499,
+   "n_stays": 17
+  },
+  {
+   "user": "U_10",
+   "time": "2008-02-08 20:00:00",
+   "top3": [
+    "toilet",
+    "parking",
+    "office"
+   ],
+   "max_p": 0.543,
+   "n_stays": 17
+  },
+  {
+   "user": "U_17",
+   "time": "2008-02-08 12:00:00",
+   "top3": [
+    "school",
+    "hotel",
+    "parking"
+   ],
+   "max_p": 0.269,
+   "n_stays": 26
+  }
+ ],
  "lunch_restaurant": [
   {
    "user": "U_2",
    "time": "2008-02-08 12:00:00",
    "top3": [
     "hospital",
-    "park",
-    "restaurant"
+    "restaurant",
+    "park"
    ],
-   "max_p": 0.358,
+   "max_p": 0.356,
    "n_stays": 11
   },
   {
@@ -21,7 +89,7 @@
     "hotel",
     "transport"
    ],
-   "max_p": 0.235,
+   "max_p": 0.267,
    "n_stays": 11
   },
   {
@@ -30,45 +98,45 @@
    "top3": [
     "park",
     "restaurant",
-    "parking"
+    "office"
    ],
-   "max_p": 0.181,
+   "max_p": 0.222,
    "n_stays": 21
   }
  ],
  "day_fuel": [
   {
-   "user": "U_180",
-   "time": "2008-02-08 12:00:00",
-   "top3": [
-    "hospital",
-    "fuel",
-    "restaurant"
-   ],
-   "max_p": 0.15,
-   "n_stays": 16
-  },
-  {
-   "user": "U_310",
-   "time": "2008-02-08 12:00:00",
+   "user": "U_62",
+   "time": "2008-02-07 12:00:00",
    "top3": [
     "restaurant",
-    "toilet",
-    "fuel"
-   ],
-   "max_p": 0.165,
-   "n_stays": 35
-  },
-  {
-   "user": "U_318",
-   "time": "2008-02-08 12:00:00",
-   "top3": [
     "fuel",
-    "restaurant",
     "office"
    ],
-   "max_p": 0.214,
-   "n_stays": 69
+   "max_p": 0.215,
+   "n_stays": 22
+  },
+  {
+   "user": "U_93",
+   "time": "2008-02-08 12:00:00",
+   "top3": [
+    "restaurant",
+    "fuel",
+    "office"
+   ],
+   "max_p": 0.261,
+   "n_stays": 34
+  },
+  {
+   "user": "U_116",
+   "time": "2008-02-07 12:00:00",
+   "top3": [
+    "restaurant",
+    "office",
+    "fuel"
+   ],
+   "max_p": 0.205,
+   "n_stays": 17
   }
  ],
  "cold_midday": [
@@ -77,10 +145,10 @@
    "time": "2008-02-08 12:00:00",
    "top3": [
     "park",
-    "parking",
-    "restaurant"
+    "restaurant",
+    "parking"
    ],
-   "max_p": 0.307,
+   "max_p": 0.29,
    "n_stays": 7
   },
   {
@@ -88,10 +156,10 @@
    "time": "2008-02-08 12:00:00",
    "top3": [
     "toilet",
-    "hotel",
-    "school"
+    "school",
+    "park"
    ],
-   "max_p": 0.143,
+   "max_p": 0.148,
    "n_stays": 7
   },
   {
@@ -102,7 +170,7 @@
     "hotel",
     "transport"
    ],
-   "max_p": 0.135,
+   "max_p": 0.161,
    "n_stays": 2
   }
  ]

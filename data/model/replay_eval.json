@@ -2,13 +2,13 @@
  "口径": "每20模拟分钟一个决策点; 判卷=决策后3小时内司机真实下一停留; 命中=MLP top3含该停留类别",
  "all": {
   "graded": 20229,
-  "hit": 12001,
-  "rate": 0.5933
+  "hit": 12063,
+  "rate": 0.5963
  },
  "val": {
   "graded": 5326,
-  "hit": 2704,
-  "rate": 0.5077
+  "hit": 2649,
+  "rate": 0.4974
  },
  "top_days": [
   {
@@ -31,33 +31,33 @@
    "user": "U_305",
    "day": "2008-02-07",
    "graded": 50,
-   "hit": 45,
-   "rate": 0.9,
-   "val": false
-  },
-  {
-   "user": "U_274",
-   "day": "2008-02-07",
-   "graded": 42,
-   "hit": 42,
-   "rate": 1.0,
+   "hit": 44,
+   "rate": 0.88,
    "val": false
   },
   {
    "user": "U_382",
    "day": "2008-02-07",
    "graded": 47,
-   "hit": 41,
-   "rate": 0.872,
+   "hit": 44,
+   "rate": 0.936,
    "val": false
   },
   {
    "user": "U_465",
    "day": "2008-02-07",
    "graded": 45,
-   "hit": 40,
-   "rate": 0.889,
+   "hit": 42,
+   "rate": 0.933,
    "val": true
+  },
+  {
+   "user": "U_274",
+   "day": "2008-02-07",
+   "graded": 42,
+   "hit": 39,
+   "rate": 0.929,
+   "val": false
   },
   {
    "user": "U_307",
@@ -84,14 +84,6 @@
    "val": false
   },
   {
-   "user": "U_453",
-   "day": "2008-02-07",
-   "graded": 40,
-   "hit": 38,
-   "rate": 0.95,
-   "val": true
-  },
-  {
    "user": "U_259",
    "day": "2008-02-04",
    "graded": 38,
@@ -100,11 +92,19 @@
    "val": true
   },
   {
-   "user": "U_305",
+   "user": "U_164",
    "day": "2008-02-05",
-   "graded": 44,
+   "graded": 53,
    "hit": 37,
-   "rate": 0.841,
+   "rate": 0.698,
+   "val": true
+  },
+  {
+   "user": "U_274",
+   "day": "2008-02-05",
+   "graded": 40,
+   "hit": 37,
+   "rate": 0.925,
    "val": false
   }
  ]

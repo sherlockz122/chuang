@@ -21,7 +21,7 @@ from features import CATS  # noqa: E402
 #              push_cat=必须推该类; push_in_top3=必须推 MLP top3 之一
 SCENARIOS = [
     {'id': 'S01', 'rule': 'safety', 'name': 'L1低警惕拦景区',
-     'user': 'U_15', 'time': '2008-02-08 12:00:00', 'pos_cat': 'scenic',
+     'user': 'U_10', 'time': '2008-02-08 12:00:00', 'pos_cat': 'scenic',
      'safety': 1, 'highway': 'secondary', 'last_push_min': 0.0,
      'expect': {'block_cats': ['scenic'], 'block_rule': '不允许'}},
     {'id': 'S02', 'rule': 'safety', 'name': 'L2疲劳拦餐饮',
@@ -33,11 +33,11 @@ SCENARIOS = [
      'safety': 2, 'highway': 'secondary', 'last_push_min': 0.0,
      'expect': {'push_cat': 'parking'}},
     {'id': 'S04', 'rule': 'safety', 'name': 'L0清醒白天放景区',
-     'user': 'U_15', 'time': '2008-02-08 12:00:00', 'pos_cat': 'scenic',
+     'user': 'U_10', 'time': '2008-02-08 12:00:00', 'pos_cat': 'scenic',
      'safety': 0, 'highway': 'secondary', 'last_push_min': 0.0,
      'expect': {'not_blocked_cats': ['scenic']}},
-    {'id': 'S05', 'rule': 'night', 'name': '深夜23点拦景区',
-     'user': 'U_24', 'time': '2008-02-08 23:00:00', 'pos_cat': 'scenic',
+    {'id': 'S05', 'rule': 'night', 'name': '深夜拦景区',
+     'user': 'U_39', 'time': '2008-02-08 01:00:00', 'pos_cat': 'scenic',
      'safety': 0, 'highway': 'secondary', 'last_push_min': 0.0,
      'expect': {'block_cats': ['scenic'], 'block_rule': '深夜时段'}},
     {'id': 'S06', 'rule': 'night', 'name': '深夜放行餐饮(对照组)',

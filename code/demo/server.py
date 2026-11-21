@@ -303,7 +303,7 @@ DRIVE_CACHE = {}  # (uid, day) -> 回放响应（贴路展开按天缓存）
 @app.get('/api/drive/{uid}')
 def drive_traj(uid: str, day: str = None):
     """行驶回放轨迹：该用户真实 GPS 点序列（clean/<id>.jsonl），可指定日期。
-    相邻采样点（~5 分钟间隔）之间沿路网贪心连线贴路，避免穿街区直线。
+    相邻采样点（~5 分钟间隔）之间沿路网 A* 连线贴路（失败中点插桩重试，再失败直线兜底）。
     gt_stays=当日真实停留序列，作回放评测的判卷答案（决策时刻之后司机实际去了哪）"""
     num = uid[2:] if uid.startswith('U_') else uid
     key = (num, day or '')
